@@ -17,11 +17,11 @@ using namespace std;
 #define f first
 #define s second
 #define sp <<" "<<
-// #define endl '\n'
+#define endl '\n'
 const int MAXN = 1e5+5;
 const ll MOD = 1e9+7;
 const ll HMOD = 998244353;
-const ll INF = 1e16;
+const ll INF = 1e9;
 const ld PI = 3.1415926535897932384626433832795;
 const ld EPS = 1e-9;
 
@@ -42,10 +42,10 @@ void no() { cout<<"NO\n"; }
 /* FUNCTIONS */
 #define sz(a) ((int)a.size())
 #define all(a) (a).begin(), (a).end()
-#define fr(i,s,e) for(long long int i=(s);i<(e);i++)
+#define fr(i,s,e) for(ll i=(s);i<(e);i++)
 #define frn(i,n) fr(i,0,(n))
-#define cfr(i,s,e) for(long long int i=(s);i<=(e);i++)
-#define rfr(i,e,s) for(long long int i=(e)-1;i>=(s);i--)
+#define cfr(i,s,e) for(ll i=(s);i<=(e);i++)
+#define rfr(i,e,s) for(ll i=(e)-1;i>=(s);i--)
 #define afr(a) for(auto u:a)
 #define pb push_back
 #define eb emplace_back
@@ -61,53 +61,49 @@ typedef long long int int64;
 typedef unsigned long long int uint64;
 
 
-vector<vector<pll>> graph;
-vll dist;
+int n;
+vector<vi> votes;
+vector<int> memo;
 
-int dfs(int u, int d, int s, vector<int> &vis, vector<int>& cycle) {
-    if(u == s && d > 0) {
-        cycle.push_back(u + 1);
-        return 1;
+int dp(int idx) {
+    if(idx == n) return 0;
+    if(memo[idx] != -1) return memo[idx];
+    int ans = 0;
+    int fb = (votes[0][idx] + votes[1][idx] + votes[1][idx+1]) > 1;
+    int sb = (votes[1][idx+1] + votes[1][idx+2] + votes[0][idx+2]) > 1;
+    int ft = (votes[0][idx] + votes[1][idx] + votes[0][idx+1]) > 1;
+    int st = (votes[0][idx+1] + votes[1][idx+2] + votes[0][idx+2]) > 1;
+    int tt = (votes[0][idx] + votes[0][idx+1] + votes[0][idx+2]) > 1;
+    int bb = (votes[1][idx] + votes[1][idx+1] + votes[1][idx+2]) > 1;
+
+    int sst = (votes[0][idx+4] + votes[1][idx+5] + votes[0][idx+5]) > 1;
+    int ssb = (votes[1][idx+4] + votes[1][idx+5] + votes[0][idx+5]) > 1;
+    int ftt = (votes[0][idx+1] + votes[0][idx+2] + votes[0][idx+3]) > 1;
+    int fftt = (votes[0][idx+2] + votes[0][idx+3] + votes[0][idx+4]) > 1;
+    int fbb = (votes[1][idx+1] + votes[1][idx+2] + votes[1][idx+3]) > 1;
+    int ffbb = (votes[1][idx+2] + votes[1][idx+3] + votes[1][idx+4]) > 1;
+    // cout << idx sp fb sp st sp ft sp sb << endl;
+    ans = max(ans, dp(idx+3) + fb + st);
+    ans = max(ans, dp(idx+3) + ft + sb);
+    ans = max(ans, dp(idx+3) + tt + bb);
+    if(idx + 6 <= n) {
+        ans = max(ans, dp(idx+6) + fb + ftt + ffbb + sst);
+        ans = max(ans, dp(idx+6) + ft + fbb + fftt + ssb);
     }
-    if(vis[u]) return 0;
-    vis[u] = 1;
-    cycle.push_back(u + 1);
-    for(auto [v, w] : graph[u]) {
-        int flag = dfs(v, d+w, s, vis, cycle);
-        if(flag) return 1;
-    }
-    vis[u] = 0;
-    cycle.pop_back();
-    return 0;
+    return memo[idx] = ans;
 }
 
 void solve() {
-    cin.tie(0)->sync_with_stdio(0);
-    int n, m; cin >> n >> m;
-    graph = vector<vector<pll>>(n);
-    frn(i, m) {
-        int a, b, w; cin >> a >> b >> w;
-        a--, b--, w *= -1;
-        graph[a].pb({b, w});
+    cin >> n;
+    string a, b; cin >> a >> b;
+    votes = vector<vi>(2, vi(n));
+    for(int i=0; i<n; i++) {
+        votes[0][i] = (a[i] == 'A');
+        votes[1][i] = (b[i] == 'A');
     }
-    dist = vll(n, INF); dist[0] = 0;
-    frn(i, n)
-        frn(j, n)
-            for(auto [nbr, wt] : graph[j]) 
-                dist[nbr] = min(dist[nbr], dist[j]+wt);
-    vector<int> cycle;
-    frn(start, n) {
-        vector<int> vis(n);
-        int flag = dfs(start, 0, start, vis, cycle);
-        if(flag) break;
-    }
-    int s = cycle.size();
-    if(s == 0) {
-        cout << "NO" << endl;
-        return;
-    }
-    cout << "YES" << endl;
-    for(int i=0; i<s; i++) cout << cycle[i] << " \n"[i==s-1];
+    memo = vector<int>(n, -1);
+
+    cout << dp(0) << endl;
 }
 
 int main() {
@@ -115,7 +111,7 @@ int main() {
     cin.tie(0); cout.tie(0);
 
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     cfr(t, 1, tc) {
         // cout << "Case #" << t << ": ";
         solve();

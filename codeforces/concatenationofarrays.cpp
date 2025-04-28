@@ -6,6 +6,7 @@ using namespace std;
 #define ll long long
 #define ld long double
 #define pii pair<int, int>
+#define vpi vector<pii>
 #define pll pair<long long, long long>
 #define vi vector<int>
 #define vll vector<long long>
@@ -17,11 +18,11 @@ using namespace std;
 #define f first
 #define s second
 #define sp <<" "<<
-// #define endl '\n'
+#define endl '\n'
 const int MAXN = 1e5+5;
 const ll MOD = 1e9+7;
 const ll HMOD = 998244353;
-const ll INF = 1e16;
+const ll INF = 1e9;
 const ld PI = 3.1415926535897932384626433832795;
 const ld EPS = 1e-9;
 
@@ -42,11 +43,11 @@ void no() { cout<<"NO\n"; }
 /* FUNCTIONS */
 #define sz(a) ((int)a.size())
 #define all(a) (a).begin(), (a).end()
-#define fr(i,s,e) for(long long int i=(s);i<(e);i++)
+#define fr(i,s,e) for(ll i=(s);i<(e);i++)
 #define frn(i,n) fr(i,0,(n))
-#define cfr(i,s,e) for(long long int i=(s);i<=(e);i++)
-#define rfr(i,e,s) for(long long int i=(e)-1;i>=(s);i--)
-#define afr(a) for(auto u:a)
+#define cfr(i,s,e) for(ll i=(s);i<=(e);i++)
+#define rfr(i,e,s) for(ll i=(e)-1;i>=(s);i--)
+#define afr(a) for(auto &u:a)
 #define pb push_back
 #define eb emplace_back
 
@@ -61,53 +62,48 @@ typedef long long int int64;
 typedef unsigned long long int uint64;
 
 
-vector<vector<pll>> graph;
-vll dist;
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
 
-int dfs(int u, int d, int s, vector<int> &vis, vector<int>& cycle) {
-    if(u == s && d > 0) {
-        cycle.push_back(u + 1);
-        return 1;
+struct multiost {
+    typedef tree<
+        pii,
+        null_type,
+        less<pii>,
+        rb_tree_tag,
+        tree_order_statistics_node_update
+    > ost;
+
+    ost s;
+    unsigned cnt = 0;
+
+    multiost() = default;
+    multiost(initializer_list<int> l) { for(int x : l) insert(x); }
+    void insert(int x) { s.insert({x, cnt++}); }
+    ost::iterator find_by_order(int k) { return s.find_by_order(k); }
+    int order_of_key(int k) { return s.order_of_key({k, 0}); }
+    void erase(int x) {
+        auto it = s.lower_bound({x, 0});
+        // erase(it); // erases only first element
+        while(it != s.end() && it->first == x) erase(it++); // erases all elements
     }
-    if(vis[u]) return 0;
-    vis[u] = 1;
-    cycle.push_back(u + 1);
-    for(auto [v, w] : graph[u]) {
-        int flag = dfs(v, d+w, s, vis, cycle);
-        if(flag) return 1;
-    }
-    vis[u] = 0;
-    cycle.pop_back();
-    return 0;
+    void erase(ost::iterator it) { s.erase(it); }
+    size_t size() const { return s.size(); }
+};
+
+
+int cmp(pii a, pii b) {
+    pii c = {min(a.f, a.s), max(a.f, a.s)};
+    pii d = {min(b.f, b.s), max(b.f, b.s)};
+    return c < d;
 }
 
 void solve() {
-    cin.tie(0)->sync_with_stdio(0);
-    int n, m; cin >> n >> m;
-    graph = vector<vector<pll>>(n);
-    frn(i, m) {
-        int a, b, w; cin >> a >> b >> w;
-        a--, b--, w *= -1;
-        graph[a].pb({b, w});
-    }
-    dist = vll(n, INF); dist[0] = 0;
-    frn(i, n)
-        frn(j, n)
-            for(auto [nbr, wt] : graph[j]) 
-                dist[nbr] = min(dist[nbr], dist[j]+wt);
-    vector<int> cycle;
-    frn(start, n) {
-        vector<int> vis(n);
-        int flag = dfs(start, 0, start, vis, cycle);
-        if(flag) break;
-    }
-    int s = cycle.size();
-    if(s == 0) {
-        cout << "NO" << endl;
-        return;
-    }
-    cout << "YES" << endl;
-    for(int i=0; i<s; i++) cout << cycle[i] << " \n"[i==s-1];
+    int n; cin >> n;
+    vpi a(n); afr(a) cin >> u.f >> u.s;
+    sort(a.begin(), a.end(), cmp);
+    afr(a) cout << u.f sp u.s << " ";
+    cout << endl;
 }
 
 int main() {
@@ -115,7 +111,7 @@ int main() {
     cin.tie(0); cout.tie(0);
 
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     cfr(t, 1, tc) {
         // cout << "Case #" << t << ": ";
         solve();

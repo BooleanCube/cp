@@ -17,11 +17,11 @@ using namespace std;
 #define f first
 #define s second
 #define sp <<" "<<
-// #define endl '\n'
+#define endl '\n'
 const int MAXN = 1e5+5;
 const ll MOD = 1e9+7;
 const ll HMOD = 998244353;
-const ll INF = 1e16;
+const ll INF = 1e9;
 const ld PI = 3.1415926535897932384626433832795;
 const ld EPS = 1e-9;
 
@@ -42,10 +42,10 @@ void no() { cout<<"NO\n"; }
 /* FUNCTIONS */
 #define sz(a) ((int)a.size())
 #define all(a) (a).begin(), (a).end()
-#define fr(i,s,e) for(long long int i=(s);i<(e);i++)
+#define fr(i,s,e) for(ll i=(s);i<(e);i++)
 #define frn(i,n) fr(i,0,(n))
-#define cfr(i,s,e) for(long long int i=(s);i<=(e);i++)
-#define rfr(i,e,s) for(long long int i=(e)-1;i>=(s);i--)
+#define cfr(i,s,e) for(ll i=(s);i<=(e);i++)
+#define rfr(i,e,s) for(ll i=(e)-1;i>=(s);i--)
 #define afr(a) for(auto u:a)
 #define pb push_back
 #define eb emplace_back
@@ -61,53 +61,31 @@ typedef long long int int64;
 typedef unsigned long long int uint64;
 
 
-vector<vector<pll>> graph;
-vll dist;
-
-int dfs(int u, int d, int s, vector<int> &vis, vector<int>& cycle) {
-    if(u == s && d > 0) {
-        cycle.push_back(u + 1);
-        return 1;
-    }
-    if(vis[u]) return 0;
-    vis[u] = 1;
-    cycle.push_back(u + 1);
-    for(auto [v, w] : graph[u]) {
-        int flag = dfs(v, d+w, s, vis, cycle);
-        if(flag) return 1;
-    }
-    vis[u] = 0;
-    cycle.pop_back();
-    return 0;
-}
-
 void solve() {
-    cin.tie(0)->sync_with_stdio(0);
     int n, m; cin >> n >> m;
-    graph = vector<vector<pll>>(n);
+    vector<int> deg(n);
+    vector<vi> graph(n);
     frn(i, m) {
-        int a, b, w; cin >> a >> b >> w;
-        a--, b--, w *= -1;
-        graph[a].pb({b, w});
+        int a, b; cin >> a >> b;
+        a--, b--;
+        graph[a].pb(b); deg[b]++;
     }
-    dist = vll(n, INF); dist[0] = 0;
-    frn(i, n)
-        frn(j, n)
-            for(auto [nbr, wt] : graph[j]) 
-                dist[nbr] = min(dist[nbr], dist[j]+wt);
-    vector<int> cycle;
-    frn(start, n) {
-        vector<int> vis(n);
-        int flag = dfs(start, 0, start, vis, cycle);
-        if(flag) break;
+    vector<int> ans;
+    deque<int> q;
+    frn(i, n) if(deg[i] == 0) q.push_back(i);
+    while(!q.empty()) {
+        int u = q.front(); q.pop_front();
+        ans.pb(u + 1);
+        for(int v : graph[u]) {
+            deg[v]--;
+            if(deg[v] == 0) q.push_back(v);
+        }
     }
-    int s = cycle.size();
-    if(s == 0) {
-        cout << "NO" << endl;
+    if(sz(ans) < n) {
+        cout << "IMPOSSIBLE" << endl;
         return;
     }
-    cout << "YES" << endl;
-    for(int i=0; i<s; i++) cout << cycle[i] << " \n"[i==s-1];
+    printv(ans);
 }
 
 int main() {

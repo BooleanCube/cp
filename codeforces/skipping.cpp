@@ -17,7 +17,7 @@ using namespace std;
 #define f first
 #define s second
 #define sp <<" "<<
-// #define endl '\n'
+#define endl '\n'
 const int MAXN = 1e5+5;
 const ll MOD = 1e9+7;
 const ll HMOD = 998244353;
@@ -42,11 +42,11 @@ void no() { cout<<"NO\n"; }
 /* FUNCTIONS */
 #define sz(a) ((int)a.size())
 #define all(a) (a).begin(), (a).end()
-#define fr(i,s,e) for(long long int i=(s);i<(e);i++)
+#define fr(i,s,e) for(ll i=(s);i<(e);i++)
 #define frn(i,n) fr(i,0,(n))
-#define cfr(i,s,e) for(long long int i=(s);i<=(e);i++)
-#define rfr(i,e,s) for(long long int i=(e)-1;i>=(s);i--)
-#define afr(a) for(auto u:a)
+#define cfr(i,s,e) for(ll i=(s);i<=(e);i++)
+#define rfr(i,e,s) for(ll i=(e)-1;i>=(s);i--)
+#define afr(a) for(auto &u:a)
 #define pb push_back
 #define eb emplace_back
 
@@ -60,62 +60,40 @@ typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int uint64;
 
+#define int ll
 
-vector<vector<pll>> graph;
-vll dist;
-
-int dfs(int u, int d, int s, vector<int> &vis, vector<int>& cycle) {
-    if(u == s && d > 0) {
-        cycle.push_back(u + 1);
-        return 1;
-    }
-    if(vis[u]) return 0;
-    vis[u] = 1;
-    cycle.push_back(u + 1);
-    for(auto [v, w] : graph[u]) {
-        int flag = dfs(v, d+w, s, vis, cycle);
-        if(flag) return 1;
-    }
-    vis[u] = 0;
-    cycle.pop_back();
-    return 0;
-}
 
 void solve() {
-    cin.tie(0)->sync_with_stdio(0);
-    int n, m; cin >> n >> m;
-    graph = vector<vector<pll>>(n);
-    frn(i, m) {
-        int a, b, w; cin >> a >> b >> w;
-        a--, b--, w *= -1;
-        graph[a].pb({b, w});
+    int n; cin >> n;
+    vi a(n), b(n);
+    afr(a) cin >> u;
+    afr(b) cin >> u;
+    vi ps(n+1);
+    frn(i, n) ps[i+1] = ps[i] + a[i];
+
+    int ans = 0;
+    vi dist(n, INF);
+    priority_queue<array<int, 3>> q;
+    q.push({0, 0, 0});
+    while(!q.empty()) {
+        auto [pen, cur, mx] = q.top(); q.pop();
+        pen *= -1;
+        if(dist[cur] <= pen) continue;
+        dist[cur] = pen;
+        // cout << pen sp cur sp sum << endl;
+        ans = max(ans, ps[mx+1] - pen);
+        if(cur) q.push({-pen, cur - 1, max(mx, cur-1)});
+        q.push({-(pen + a[cur]), b[cur] - 1, max(mx, b[cur]-1)});
     }
-    dist = vll(n, INF); dist[0] = 0;
-    frn(i, n)
-        frn(j, n)
-            for(auto [nbr, wt] : graph[j]) 
-                dist[nbr] = min(dist[nbr], dist[j]+wt);
-    vector<int> cycle;
-    frn(start, n) {
-        vector<int> vis(n);
-        int flag = dfs(start, 0, start, vis, cycle);
-        if(flag) break;
-    }
-    int s = cycle.size();
-    if(s == 0) {
-        cout << "NO" << endl;
-        return;
-    }
-    cout << "YES" << endl;
-    for(int i=0; i<s; i++) cout << cycle[i] << " \n"[i==s-1];
+    cout << ans << endl;
 }
 
-int main() {
+signed main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     cfr(t, 1, tc) {
         // cout << "Case #" << t << ": ";
         solve();

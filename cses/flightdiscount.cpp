@@ -14,41 +14,46 @@ using vl = vector<ll>;
 #define sp <<" "<<
 #define endl "\n" // remove when debugging
 
-const pll INF = {1e16, 1e16};
+const ll INF = 1e16;
 
 int main() {
     int n, m; cin >> n >> m;
-    vector<vector<pll>> graph(n);
+    vector<vector<pll>> graph(n), graph2(n);
     rep(i, 0, m) {
         ll a, b, w; cin >> a >> b >> w;
         a--, b--;
         graph[a].push_back({b, w});
+        graph2[b].push_back({a, w});
     }
-    vector<pll> dist(n, INF);
-    priority_queue<array<ll, 3>, vector<array<ll, 3>>, greater<array<ll, 3>>> pq;
-    pq.push({0, 0, 0});
+    vector<ll> dist1(n, INF), dist2(n, INF);
+    priority_queue<array<ll, 2>, vector<array<ll, 2>>, greater<array<ll, 2>>> pq;
+    pq.push({0, 0});
     while(!pq.empty()) {
-        auto [psm, pmx, cur] = pq.top(); pq.pop();
-        pll nxt = {psm, pmx};
-        if(dist[cur] <= nxt) continue;
-        dist[cur] = nxt;
-        for(auto [nbr, wt] : graph[cur]) {
-            ll npsm = psm, npmx = pmx;
-            if(wt > pmx && pmx) {
-                npsm -= (npmx >> 1) - (npmx) - (wt >> 1);
-                npmx = wt;
-            } else if(-1 < pmx && !pmx) {
-                npsm += (wt >> 1);
-                npmx = wt;
-            } else npsm += wt;
-            pll nxt = {npsm, npmx};
-            if(dist[nbr] <= nxt) continue;
-            pq.push({nxt.f, nxt.s, nbr});
+        auto [cd, cu] = pq.top(); pq.pop();
+        if(dist1[cu] <= cd) continue;
+        dist1[cu] = cd;
+        for(auto [nv, wt] : graph[cu]) {
+            if(dist1[nv] <= cd + wt) continue;
+            pq.push({cd + wt, nv});
         }
     }
-    for(pll p : dist) {
-        cout << "{" << p.f << " " << p.s << "}" << endl;
+    pq.push({0, n-1});
+    while(!pq.empty()) {
+        auto [cd, cu] = pq.top(); pq.pop();
+        if(dist2[cu] <= cd) continue;
+        dist2[cu] = cd;
+        for(auto [nv, wt] : graph2[cu]) {
+            if(dist2[nv] <= cd + wt) continue;
+            pq.push({cd + wt, nv});
+        }
     }
-    cout << dist[n-1].f << endl;
+    ll ans = INF;
+    for(int u=0; u<n; u++) {
+        for(auto [v, w] : graph[u]) {
+            ans = min(ans, dist1[u] + (w / 2) + dist2[v]);
+        }
+    }
+    // for(int i=0; i<n; i++) cout << "{" << i << " " << dist1[i] << "}" << endl;
+    cout << ans << endl;
     return 0;
 }
