@@ -1,0 +1,5 @@
+n = int(input())
+l = list(map(int, input().split()))
+l.sort()
+e = max(0, l[-1]-sum(l[:-1]))
+print(sum(l)+e)
