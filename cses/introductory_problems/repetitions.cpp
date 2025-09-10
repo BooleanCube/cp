@@ -1,4 +1,19 @@
-input/code.cpp: In function 'int main()':
-input/code.cpp:11:16: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int i=1; i<dna.length(); i++) {
-               ~^~~~~~~~~~~~~
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+
+int main() {
+	int counter = 1;
+	int max = 1;
+	string dna; cin >> dna;
+	char prev = dna.at(0);
+	for(int i=1; i<dna.length(); i++) {
+		char c = dna.at(i);
+		if(prev == c) counter++;
+		else counter = 1;
+		if(counter > max) max = counter;
+		prev = c;
+	}
+	cout << max << endl;
+}

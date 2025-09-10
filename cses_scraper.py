@@ -107,10 +107,11 @@ class CSESSolutionDownloader:
         if submission_page.status_code == 200:
             # Extract code from the page
             soup = BeautifulSoup(submission_page.text, 'html.parser')
-            code_element = soup.find('pre')
+            pre_elements = soup.find_all('pre')
 
-            if code_element:
-                return code_element.text
+            for pre in pre_elements:
+                if pre and 'linenums' in str(pre):
+                    return pre.text
 
         return None
 
