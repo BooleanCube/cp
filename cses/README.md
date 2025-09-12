@@ -1,6 +1,6 @@
 # CSES Problem Set Solutions
 
-This repository contains my accepted solutions for 127 problems from the CSES Problem Set.
+This repository contains my accepted solutions for 128 problems from the CSES Problem Set.
 
 ## Statistics
 
@@ -17,9 +17,9 @@ This repository contains my accepted solutions for 127 problems from the CSES Pr
 | Mathematics | 10 |
 | Range Queries | 11 |
 | Sliding Window Problems | 2 |
-| Sorting and Searching | 33 |
+| Sorting and Searching | 34 |
 | Tree Algorithms | 5 |
-| **Total** | **127** |
+| **Total** | **128** |
 
 ## Problems
 
@@ -153,6 +153,7 @@ This repository contains my accepted solutions for 127 problems from the CSES Pr
 - [Collecting Numbers II](https://cses.fi/problemset/task/2217) - `2217`
 - [Concert Tickets](https://cses.fi/problemset/task/1091) - `1091`
 - [Distinct Numbers](https://cses.fi/problemset/task/1621) - `1621`
+- [Distinct Values Subarrays](https://cses.fi/problemset/task/3420) - `3420`
 - [Distinct Values Subarrays II](https://cses.fi/problemset/task/2428) - `2428`
 - [Factory Machines](https://cses.fi/problemset/task/1620) - `1620`
 - [Ferris Wheel](https://cses.fi/problemset/task/1090) - `1090`
