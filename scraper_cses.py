@@ -134,6 +134,21 @@ class CSESSolutionDownloader:
         else:
             return '.cpp'  # Default to C++
 
+    def check_cache(self, problem):
+        """Checks whether the solution has already been generated or not"""
+        category_dir = self.solutions_dir / self.sanitize_filename(problem['category'])
+
+        if os.path.exists(category_dir):
+            filename = self.sanitize_filename(problem['name'])
+            extensions = ['.py', '.cpp', '.java']
+
+            for ext in extensions:
+                filepath = category_dir / f"{filename}{ext}"
+                if os.path.exists(filepath):
+                    return 1
+
+        return 0
+
     def sanitize_filename(self, name):
         """Convert problem name to valid filename"""
         # Remove special characters and replace spaces
@@ -219,6 +234,11 @@ class CSESSolutionDownloader:
 
             for i, problem in enumerate(problems, 1):
                 print(f"[{i}/{len(problems)}] Downloading {problem['name']}...", end=' ')
+
+                if self.check_cache(problem):
+                    success_count += 1
+                    print("✓")
+                    continue
 
                 code = self.get_accepted_solution(problem['id'])
                 if self.save_solution(problem, code):
