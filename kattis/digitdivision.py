@@ -23,10 +23,21 @@ getlist = lambda : list(map(int, input().split()))
 getstr = lambda : list(input()) # mutable string
 
 def solve():
-    pass
+    n, m = getlist()
+    a = getstr()
+    cur, cnt = 0, 0
+    for i in range(n):
+        cur *= 10
+        cur += int(a[i])
+        cur %= m
+        if cur == 0: cnt += 1
+        elif i == n-1:
+            print(0)
+            return
+    print(pow(2, cnt-1, MOD))
 
 testcases = 1
-testcases = getint()
+# testcases = getint()
 for c in range(1, testcases+1):
     #write(f"Case {c}: ")
     solve()

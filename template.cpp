@@ -62,18 +62,18 @@ typedef unsigned long long int uint64;
 
 
 void solve() {
-    return;
+  return;
 }
 
 int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+  ios_base::sync_with_stdio(0);
+  cin.tie(0); cout.tie(0);
 
-    int tc = 1;
-    cin >> tc;
-    cfr(t, 1, tc) {
-        // cout << "Case #" << t << ": ";
-        solve();
-    }
+  int tc = 1;
+  cin >> tc;
+  cfr(t, 1, tc) {
+    // cout << "Case #" << t << ": ";
+    solve();
+  }
 }
 
