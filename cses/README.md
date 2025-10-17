@@ -1,6 +1,6 @@
 # CSES Problem Set Solutions
 
-This repository contains my accepted solutions for 128 problems from the CSES Problem Set.
+This repository contains my accepted solutions for 131 problems from the CSES Problem Set.
 
 ## Statistics
 
@@ -10,16 +10,16 @@ This repository contains my accepted solutions for 128 problems from the CSES Pr
 | Additional Problems II | 1 |
 | Advanced Graph Problems | 1 |
 | Bitwise Operations | 1 |
-| Dynamic Programming | 19 |
+| Dynamic Programming | 20 |
 | Geometry | 3 |
-| Graph Algorithms | 14 |
+| Graph Algorithms | 15 |
 | Introductory Problems | 24 |
 | Mathematics | 10 |
 | Range Queries | 11 |
 | Sliding Window Problems | 2 |
-| Sorting and Searching | 34 |
+| Sorting and Searching | 35 |
 | Tree Algorithms | 5 |
-| **Total** | **128** |
+| **Total** | **131** |
 
 ## Problems
 
@@ -55,6 +55,7 @@ This repository contains my accepted solutions for 128 problems from the CSES Pr
 - [Elevator Rides](https://cses.fi/problemset/task/1653) - `1653`
 - [Grid Paths I](https://cses.fi/problemset/task/1638) - `1638`
 - [Increasing Subsequence](https://cses.fi/problemset/task/1145) - `1145`
+- [Longest Common Subsequence](https://cses.fi/problemset/task/3403) - `3403`
 - [Minimizing Coins](https://cses.fi/problemset/task/1634) - `1634`
 - [Money Sums](https://cses.fi/problemset/task/1745) - `1745`
 - [Projects](https://cses.fi/problemset/task/1140) - `1140`
@@ -75,6 +76,7 @@ This repository contains my accepted solutions for 128 problems from the CSES Pr
 - [Building Teams](https://cses.fi/problemset/task/1668) - `1668`
 - [Counting Rooms](https://cses.fi/problemset/task/1192) - `1192`
 - [Course Schedule](https://cses.fi/problemset/task/1679) - `1679`
+- [Download Speed](https://cses.fi/problemset/task/1694) - `1694`
 - [Flight Discount](https://cses.fi/problemset/task/1195) - `1195`
 - [Flight Routes Check](https://cses.fi/problemset/task/1682) - `1682`
 - [High Score](https://cses.fi/problemset/task/1673) - `1673`
@@ -155,6 +157,7 @@ This repository contains my accepted solutions for 128 problems from the CSES Pr
 - [Distinct Numbers](https://cses.fi/problemset/task/1621) - `1621`
 - [Distinct Values Subarrays](https://cses.fi/problemset/task/3420) - `3420`
 - [Distinct Values Subarrays II](https://cses.fi/problemset/task/2428) - `2428`
+- [Distinct Values Subsequences](https://cses.fi/problemset/task/3421) - `3421`
 - [Factory Machines](https://cses.fi/problemset/task/1620) - `1620`
 - [Ferris Wheel](https://cses.fi/problemset/task/1090) - `1090`
 - [Josephus Problem I](https://cses.fi/problemset/task/2162) - `2162`

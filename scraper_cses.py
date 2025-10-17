@@ -220,6 +220,16 @@ class CSESSolutionDownloader:
             for i, problem in enumerate(problems, 1):
                 print(f"[{i}/{len(problems)}] Downloading {problem['name']}...", end=' ')
 
+                # Get Category Directory
+                category_dir = self.solutions_dir / self.sanitize_filename(problem['category'])
+
+                # Determine filename
+                filename = f"{self.sanitize_filename(problem['name'])}"
+                if os.path.exists(category_dir/f"{filename}.py") or os.path.exists(category_dir/f"{filename}.cpp") or os.path.exists(category_dir/f"{filename}.java"):
+                    print("✓")
+                    success_count += 1
+                    continue
+
                 code = self.get_accepted_solution(problem['id'])
                 if self.save_solution(problem, code):
                     print("✓")
