@@ -1,6 +1,6 @@
 # CSES Problem Set Solutions
 
-This repository contains my accepted solutions for 132 problems from the CSES Problem Set.
+This repository contains my accepted solutions for 134 problems from the CSES Problem Set.
 
 ## Statistics
 
@@ -18,8 +18,8 @@ This repository contains my accepted solutions for 132 problems from the CSES Pr
 | Range Queries | 11 |
 | Sliding Window Problems | 2 |
 | Sorting and Searching | 35 |
-| Tree Algorithms | 5 |
-| **Total** | **132** |
+| Tree Algorithms | 7 |
+| **Total** | **134** |
 
 ## Problems
 
@@ -188,6 +188,8 @@ This repository contains my accepted solutions for 132 problems from the CSES Pr
 
 ### Tree Algorithms
 
+- [Company Queries I](https://cses.fi/problemset/task/1687) - `1687`
+- [Company Queries II](https://cses.fi/problemset/task/1688) - `1688`
 - [Subordinates](https://cses.fi/problemset/task/1674) - `1674`
 - [Tree Diameter](https://cses.fi/problemset/task/1131) - `1131`
 - [Tree Distances I](https://cses.fi/problemset/task/1132) - `1132`
