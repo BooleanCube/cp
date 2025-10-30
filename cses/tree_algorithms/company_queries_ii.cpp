@@ -31,10 +31,7 @@ struct BL {
     return ht[u] = climb(p, p[u]) + 1;
   }
   int kth(int u, int k) {
-    while(k) {
-      u = jmp[u][__builtin_ctz(k)];
-      k -= k & -k;
-    }
+    for(; k; k -= k&-k) u = jmp[u][__builtin_ctz(k)];
     return u;
   }
   int lca(int u, int v, int k = 1) {
