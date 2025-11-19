@@ -1,16 +1,16 @@
 # CSES Problem Set Solutions
 
-This repository contains my accepted solutions for 134 problems from the CSES Problem Set.
+This repository contains my accepted solutions for 136 problems from the CSES Problem Set.
 
 ## Statistics
 
 | Category | Solved |
 |----------|--------|
 | Additional Problems I | 3 |
-| Additional Problems II | 1 |
+| Additional Problems II | 2 |
 | Advanced Graph Problems | 1 |
 | Bitwise Operations | 1 |
-| Dynamic Programming | 20 |
+| Dynamic Programming | 21 |
 | Geometry | 3 |
 | Graph Algorithms | 16 |
 | Introductory Problems | 24 |
@@ -19,7 +19,7 @@ This repository contains my accepted solutions for 134 problems from the CSES Pr
 | Sliding Window Problems | 2 |
 | Sorting and Searching | 35 |
 | Tree Algorithms | 7 |
-| **Total** | **134** |
+| **Total** | **136** |
 
 ## Problems
 
@@ -31,6 +31,7 @@ This repository contains my accepted solutions for 134 problems from the CSES Pr
 
 ### Additional Problems II
 
+- [Mex Grid Queries](https://cses.fi/problemset/task/1157) - `1157`
 - [Stick Divisions](https://cses.fi/problemset/task/1161) - `1161`
 
 ### Advanced Graph Problems
@@ -56,6 +57,7 @@ This repository contains my accepted solutions for 134 problems from the CSES Pr
 - [Grid Paths I](https://cses.fi/problemset/task/1638) - `1638`
 - [Increasing Subsequence](https://cses.fi/problemset/task/1145) - `1145`
 - [Longest Common Subsequence](https://cses.fi/problemset/task/3403) - `3403`
+- [Minimal Grid Path](https://cses.fi/problemset/task/3359) - `3359`
 - [Minimizing Coins](https://cses.fi/problemset/task/1634) - `1634`
 - [Money Sums](https://cses.fi/problemset/task/1745) - `1745`
 - [Projects](https://cses.fi/problemset/task/1140) - `1140`

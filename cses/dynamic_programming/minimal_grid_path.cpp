@@ -10,14 +10,14 @@ using namespace std;
 #define vi vector<int>
 #define vll vector<long long>
 #define mii map<int, int>
-#define si set<int>
+// #define si set<int>
 #define sc set<char>
 
 /* CONSTANTS */
 #define f first
 #define s second
 #define sp <<" "<<
-#define endl '\n'
+// #define endl '\n'
 const int MAXN = 1e5+5;
 const ll MOD = 1e9+7;
 const ll HMOD = 998244353;
@@ -53,6 +53,8 @@ void no() { cout<<"NO\n"; }
 /* DEBUGGING && PRINTING */
 #define printv(a) {for(auto u:a) cout<<u<<" "; cout<<endl;}
 #define printm(a) {for(auto u:a) cout<<u.f sp u.s<<endl;}
+#define printmm(a) {for(auto u:a) cout<<u.f sp u.s.f sp u.s.s sp 's'<<endl;}
+
 
 /*  All Required define Pre-Processors and typedef Constants */
 typedef long int int32;
@@ -61,8 +63,54 @@ typedef long long int int64;
 typedef unsigned long long int uint64;
 
 
+int n;
+vector<string> grid;
+vector<vi> vis;
+
+int valid(int i, int j) { return 0<=i && i<n && 0<=j && j<n; }
+
+pair<string, pii> bfs(int si, int sj) {
+  string ans = "";
+  deque<pii> q; q.pb({si, sj});
+  while(sz(q)) {
+    // cout << sz(q) << endl;
+    char mn = 'Z';
+    vector<pair<char, pii>> cL;
+    while(sz(q)) {
+      auto [i, j] = q.front();
+      if(i == n-1 && j == n-1) goto leave;
+      q.pop_front();
+      if(i < n-1 && !vis[i+1][j]) {
+        vis[i+1][j] = 1;
+        mn = min(mn, grid[i+1][j]), cL.pb({grid[i+1][j], {i+1, j}});
+      }
+      if(j < n-1 && !vis[i][j+1]) {
+        vis[i][j+1] = 1;
+        mn = min(mn, grid[i][j+1]), cL.pb({grid[i][j+1], {i, j+1}});
+      }
+    }
+    int cnt = 0;
+    afr(cL) if(u.f == mn) cnt++, q.pb(u.s);
+    if(cnt == 1) break;
+    ans += mn;
+  }
+leave:
+  return {ans, *q.begin()};
+}
+
 void solve() {
-  return;
+  cin >> n;
+  grid = vector<string>(n); afr(grid) cin >> u;
+  vis = vector<vi>(n, vi(n));
+  string ans = "";
+  int i = 0, j = 0;
+  while(sz(ans) < n + n - 1) {
+    ans += grid[i][j];
+    auto [cur, ns] = bfs(i, j);
+    ans += cur; i = ns.f, j = ns.s;
+  }
+  // ans.pop_back();
+  cout << ans << endl;
 }
 
 int main() {
@@ -70,7 +118,7 @@ int main() {
   cin.tie(0); cout.tie(0);
 
   int tc = 1;
-  cin >> tc;
+  // cin >> tc;
   cfr(t, 1, tc) {
     // cout << "Case #" << t << ": ";
     solve();
