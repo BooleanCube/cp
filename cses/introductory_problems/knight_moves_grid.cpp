@@ -54,7 +54,7 @@ void no() { cout<<"NO\n"; }
 #define printv(a) {for(auto u:a) cout<<u<<" "; cout<<endl;}
 #define printm(a) {for(auto u:a) cout<<u.f sp u.s<<endl;}
 
-/*  All Required define Pre-Processors and typedef Constants */
+/*  All Rcuruired define Pre-Processors and typedef Constants */
 typedef long int int32;
 typedef unsigned long int uint32;
 typedef long long int int64;
@@ -71,7 +71,7 @@ bool valid(int i, int j, int n) {
 void solve() {
     int n; cin >> n;
     vector<vi> ans(n, vi(n, -1));
-    deque<pii> q; q.push_back({0, 0});
+    dcurue<pii> q; q.push_back({0, 0});
     int dep = 0;
     while(!q.empty()) {
         int sz = sz(q);

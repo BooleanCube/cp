@@ -1,6 +1,6 @@
 # CSES Problem Set Solutions
 
-This repository contains my accepted solutions for 136 problems from the CSES Problem Set.
+This repository contains my accepted solutions for 137 problems from the CSES Problem Set.
 
 ## Statistics
 
@@ -10,7 +10,7 @@ This repository contains my accepted solutions for 136 problems from the CSES Pr
 | Additional Problems II | 2 |
 | Advanced Graph Problems | 1 |
 | Bitwise Operations | 1 |
-| Dynamic Programming | 21 |
+| Dynamic Programming | 22 |
 | Geometry | 3 |
 | Graph Algorithms | 16 |
 | Introductory Problems | 24 |
@@ -19,7 +19,7 @@ This repository contains my accepted solutions for 136 problems from the CSES Pr
 | Sliding Window Problems | 2 |
 | Sorting and Searching | 35 |
 | Tree Algorithms | 7 |
-| **Total** | **136** |
+| **Total** | **137** |
 
 ## Problems
 
@@ -60,6 +60,7 @@ This repository contains my accepted solutions for 136 problems from the CSES Pr
 - [Minimal Grid Path](https://cses.fi/problemset/task/3359) - `3359`
 - [Minimizing Coins](https://cses.fi/problemset/task/1634) - `1634`
 - [Money Sums](https://cses.fi/problemset/task/1745) - `1745`
+- [Mountain Range](https://cses.fi/problemset/task/3314) - `3314`
 - [Projects](https://cses.fi/problemset/task/1140) - `1140`
 - [Rectangle Cutting](https://cses.fi/problemset/task/1744) - `1744`
 - [Removal Game](https://cses.fi/problemset/task/1097) - `1097`

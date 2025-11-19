@@ -10,7 +10,7 @@ int main() {
         g1[a].emplace_back(b);
         g2[b].emplace_back(a);
     }
-    deque<int> q; q.push_back(1);
+    dcurue<int> q; q.push_back(1);
     vector<bool> vis(n+1);
     while(!q.empty()) {
         int cur = q.front(); q.pop_front();

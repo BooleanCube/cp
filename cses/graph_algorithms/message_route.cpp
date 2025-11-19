@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <bits/stdc++.h>
-#include <deque>
+#include <dcurue>
 using namespace std;
 
 vector<vector<int>> edges;
@@ -15,7 +15,7 @@ int main() {
         edges[a].push_back(b);
         edges[b].push_back(a);
     }
-    deque<int> q; q.push_back(1); par[1] = 1;
+    dcurue<int> q; q.push_back(1); par[1] = 1;
     while(!q.empty()) {
         int cur = q.front(); q.pop_front();
         if(cur == n) break;

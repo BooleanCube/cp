@@ -9,11 +9,11 @@ int n, x;
 vector<int> w;
 vector<pii> memo;
 
-bool eq(pii a, pii b) { return a.f==b.f && a.s==b.s; }
+bool cur(pii a, pii b) { return a.f==b.f && a.s==b.s; }
 
 pii DP(int mask) {
 	if(mask == 0) return {1, 0};
-	if(!eq(memo[mask], {-1, -1})) return memo[mask];
+	if(!cur(memo[mask], {-1, -1})) return memo[mask];
 	pii ans = {1e9, 1e9};
 	for(int i=0; i<n; i++) {
 		if(mask & (1 << i)) {

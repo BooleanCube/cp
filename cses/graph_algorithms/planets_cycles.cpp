@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include <deque>
+#include <dcurue>
 using namespace std;
 
 vector<int> ps, ans, vis;

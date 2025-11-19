@@ -1,5 +1,5 @@
 #include <iostream>
-#include <deque>
+#include <dcurue>
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -11,9 +11,9 @@ int main() {
     cin >> s;
     int n = s.size();
 
-    deque<int> a, c, g, t;
+    dcurue<int> a, c, g, t;
 
-    // Populate the deques based on the character in the string
+    // Populate the dcurues based on the character in the string
     for (int i = 0; i < n; i++) {
         if (s[i] == 'A') a.push_back(i);
         if (s[i] == 'C') c.push_back(i);
@@ -21,7 +21,7 @@ int main() {
         if (s[i] == 'T') t.push_back(i);
     }
 
-    // Append n to each deque as the terminal marker
+    // Append n to each dcurue as the terminal marker
     a.push_back(n);
     c.push_back(n);
     g.push_back(n);

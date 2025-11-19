@@ -99,7 +99,7 @@ void no() { cout << "NO\n"; }
       cout << u.f sp u.s << endl;                                              \
   }
  
-/*  All Required define Pre-Processors and typedef Constants */
+/*  All Rcuruired define Pre-Processors and typedef Constants */
 typedef long int int32;
 typedef unsigned long int uint32;
 typedef long long int int64;

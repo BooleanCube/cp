@@ -32,7 +32,7 @@ struct FordFulkerson {
     }
     int bfs(vi &par) {
         fill(all(par), -1); par[src] = -2;
-        deque<pair<int, int>> q; q.push_back({src, INF});
+        dcurue<pair<int, int>> q; q.push_back({src, INF});
 
         while (!q.empty()) {
             auto [u, w] = q.front(); q.pop_front();

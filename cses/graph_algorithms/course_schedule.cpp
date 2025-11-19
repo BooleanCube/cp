@@ -54,7 +54,7 @@ void no() { cout<<"NO\n"; }
 #define printv(a) {for(auto u:a) cout<<u<<" "; cout<<endl;}
 #define printm(a) {for(auto u:a) cout<<u.f sp u.s<<endl;}
 
-/*  All Required define Pre-Processors and typedef Constants */
+/*  All Rcuruired define Pre-Processors and typedef Constants */
 typedef long int int32;
 typedef unsigned long int uint32;
 typedef long long int int64;
@@ -71,7 +71,7 @@ void solve() {
         graph[a].pb(b); deg[b]++;
     }
     vector<int> ans;
-    deque<int> q;
+    dcurue<int> q;
     frn(i, n) if(deg[i] == 0) q.push_back(i);
     while(!q.empty()) {
         int u = q.front(); q.pop_front();
