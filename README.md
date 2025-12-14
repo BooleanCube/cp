@@ -9,8 +9,8 @@ all of my competitive programming solutions
 python -m venv .venv
 
 # install deps for scrapers
-source .venv/bin.activate
-pip install bs4 python-dotenv urllib3 requests
+source .venv/bin/activate
+pip install -r requirements.txt
 
 # run scrapers
 ## create .env file with `nick` for cses username and `pass` for cses password.

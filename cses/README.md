@@ -1,6 +1,6 @@
 # CSES Problem Set Solutions
 
-This repository contains my accepted solutions for 139 problems from the CSES Problem Set.
+This repository contains my accepted solutions for 140 problems from the CSES Problem Set.
 
 ## Statistics
 
@@ -12,14 +12,14 @@ This repository contains my accepted solutions for 139 problems from the CSES Pr
 | Bitwise Operations | 1 |
 | Dynamic Programming | 23 |
 | Geometry | 3 |
-| Graph Algorithms | 17 |
+| Graph Algorithms | 18 |
 | Introductory Problems | 24 |
 | Mathematics | 10 |
 | Range Queries | 11 |
 | Sliding Window Problems | 2 |
 | Sorting and Searching | 35 |
 | Tree Algorithms | 7 |
-| **Total** | **139** |
+| **Total** | **140** |
 
 ## Problems
 
@@ -83,6 +83,7 @@ This repository contains my accepted solutions for 139 problems from the CSES Pr
 - [Cycle Finding](https://cses.fi/problemset/task/1197) - `1197`
 - [Download Speed](https://cses.fi/problemset/task/1694) - `1694`
 - [Flight Discount](https://cses.fi/problemset/task/1195) - `1195`
+- [Flight Routes](https://cses.fi/problemset/task/1196) - `1196`
 - [Flight Routes Check](https://cses.fi/problemset/task/1682) - `1682`
 - [High Score](https://cses.fi/problemset/task/1673) - `1673`
 - [Labyrinth](https://cses.fi/problemset/task/1193) - `1193`
