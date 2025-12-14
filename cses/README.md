@@ -1,6 +1,6 @@
 # CSES Problem Set Solutions
 
-This repository contains my accepted solutions for 137 problems from the CSES Problem Set.
+This repository contains my accepted solutions for 139 problems from the CSES Problem Set.
 
 ## Statistics
 
@@ -10,16 +10,16 @@ This repository contains my accepted solutions for 137 problems from the CSES Pr
 | Additional Problems II | 2 |
 | Advanced Graph Problems | 1 |
 | Bitwise Operations | 1 |
-| Dynamic Programming | 22 |
+| Dynamic Programming | 23 |
 | Geometry | 3 |
-| Graph Algorithms | 16 |
+| Graph Algorithms | 17 |
 | Introductory Problems | 24 |
 | Mathematics | 10 |
 | Range Queries | 11 |
 | Sliding Window Problems | 2 |
 | Sorting and Searching | 35 |
 | Tree Algorithms | 7 |
-| **Total** | **137** |
+| **Total** | **139** |
 
 ## Problems
 
@@ -56,6 +56,7 @@ This repository contains my accepted solutions for 137 problems from the CSES Pr
 - [Elevator Rides](https://cses.fi/problemset/task/1653) - `1653`
 - [Grid Paths I](https://cses.fi/problemset/task/1638) - `1638`
 - [Increasing Subsequence](https://cses.fi/problemset/task/1145) - `1145`
+- [Increasing Subsequence II](https://cses.fi/problemset/task/1748) - `1748`
 - [Longest Common Subsequence](https://cses.fi/problemset/task/3403) - `3403`
 - [Minimal Grid Path](https://cses.fi/problemset/task/3359) - `3359`
 - [Minimizing Coins](https://cses.fi/problemset/task/1634) - `1634`
@@ -79,6 +80,7 @@ This repository contains my accepted solutions for 137 problems from the CSES Pr
 - [Building Teams](https://cses.fi/problemset/task/1668) - `1668`
 - [Counting Rooms](https://cses.fi/problemset/task/1192) - `1192`
 - [Course Schedule](https://cses.fi/problemset/task/1679) - `1679`
+- [Cycle Finding](https://cses.fi/problemset/task/1197) - `1197`
 - [Download Speed](https://cses.fi/problemset/task/1694) - `1694`
 - [Flight Discount](https://cses.fi/problemset/task/1195) - `1195`
 - [Flight Routes Check](https://cses.fi/problemset/task/1682) - `1682`
