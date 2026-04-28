@@ -16,6 +16,4 @@ pip install -r requirements.txt
 ## create .env file with `nick` for cses username and `pass` for cses password.
 source .venv/bin/activate
 python scraper_cses.py
-
-# hi guys
 ```
